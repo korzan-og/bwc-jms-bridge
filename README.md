@@ -7,7 +7,7 @@ The JMS-Bridge is a component that can be used to facilitate quicker migration f
 <br />(See **JMS 2.0 Bridge** section)
 
 This JMS Bridge Graphana Demo runs the JMS Bridge in a Docker Compose along with Confluent Platform and Grapha, and includes a use case for geographical visual of airport traveler events in a Graphana Dashboard.
-![Graphana](./images/jms-bridge-graphana-demo/graphan-dashboard.png)
+![Graphana](./jms-bridge-graphana-demo/images/graphan-dashboard.png)
 
 ### Installation - Prerequisites
 The Confluent JMS Bridge Docker Images are required, these are not publicly available but can be obtained from Confluent CSID Team, typically as ```jms-bridge-docker.tar```. They are referenced as ```placeholder/confluentinc/jms-bridge-docker:local.build``` in Docker Compose. They should be loaded in Docker before starting JMS Bridge Graphana Demo for the first time for example:
