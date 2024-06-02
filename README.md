@@ -89,3 +89,6 @@ Navigate to Graphana:
 <br />[http://localhost:3000](http://localhost:3000)
 <br />(Note - Replace ```localhost``` with the IP or DNS name where Docker is running)
 <br />Open the ```PSY Traveler Events Dashboard``` Dashboard. You should see events visualized on the dashboard per the messages produced from ```psy_travelers.txt```.
+
+### JMS Bridge Architecture
+![Graphana](./jms-bridge-graphana-demo/images/jms-bridge-arch.png)
