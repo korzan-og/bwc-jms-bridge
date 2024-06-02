@@ -42,7 +42,7 @@ In Confluent Control Center, navigate to ksqlDB in the ```controlcenter.cluster`
 **Create stream to base ROWTIME calculations for downstream processing**
 ```sql
 CREATE STREAM T1_JSON (id VARCHAR, first_name VARCHAR, last_name VARCHAR, gender VARCHAR, age VARCHAR, eyecolor VARCHAR, email VARCHAR, phone_number VARCHAR, street_address VARCHAR, state VARCHAR, zip_code VARCHAR, country VARCHAR, country_code VARCHAR, airport VARCHAR, status VARCHAR)
-WITH (KAFKA_TOPIC='cbp-travel', VALUE_FORMAT='JSON');
+WITH (KAFKA_TOPIC='psy-travel', VALUE_FORMAT='JSON');
 ```
 
 **Create persistent query with formatted ROWTIME for Graphana Dashboard**
