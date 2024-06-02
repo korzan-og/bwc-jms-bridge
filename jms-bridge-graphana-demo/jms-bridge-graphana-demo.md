@@ -88,4 +88,4 @@ Use the JMS Client of your choice to generate sample events from the attached ``
 Navigate to Graphana:
 <br />[http://localhost:3000](http://localhost:3000)
 <br />(Note - Replace ```localhost``` with the IP or DNS name where Docker is running)
-Open the ```PSY Traveler Events Dashboard``` Dashboard. You should see events visualized on the dashboard per the messages produced from ```psy_travelers.txt```.
+<br />Open the ```PSY Traveler Events Dashboard``` Dashboard. You should see events visualized on the dashboard per the messages produced from ```psy_travelers.txt```.
