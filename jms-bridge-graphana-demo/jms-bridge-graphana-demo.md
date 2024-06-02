@@ -74,7 +74,7 @@ In Confluent Control Center, deploy the Sink Connector for PostgreSQL:
 Navigate to Graphana:
 <br />[http://localhost:3000](http://localhost:3000)
 <br />(Note - Replace ```localhost``` with the IP or DNS name where Docker is running)
-Upload attached ```PSY Traveler Events Dashboard-1712964241310.json``` Dashboard.
+<br />Upload attached ```PSY Traveler Events Dashboard-1712964241310.json``` Dashboard.
 
 ### Generate Sample Events
 Use the JMS Client of your choice to generate sample events from the attached ```psy_travelers.txt```:
