@@ -10,6 +10,37 @@ This JMS Bridge Graphana Demo runs the JMS Bridge in a Docker Compose along with
 ![Graphana](./jms-bridge-graphana-demo/images/graphan-dashboard.png)
 
 ### Installation - Prerequisites
+
+### Installation 
+To be able to deploy and execute the JMS Bridge Graphana Demo, the following prerequisites are required:
+
+First, create a file called `values.tfvars` with the following content in the same directory as `docker-compose.yaml`:
+```shell
+confluent_cloud_api_key="<confluent_cloud_api_key>"
+confluent_cloud_api_secret="<confluent_cloud_api_secret>"
+confluent_cloud_provider="<confluent_cloud_provider[AWS|GCP|AZURE]>"
+confluent_cloud_region="<confluent_cloud_region>"
+confluent_cloud_environment_name="<confluent_cloud_environment_name>"
+confluent_cloud_cluster_name="<confluent_cloud_cluster_name>"
+confluent_cloud_cluster_type="basic"
+confluent_cloud_topic_names=["psy-travel"]
+```
+
+Then run the following command to deploy the JMS Bridge Graphana Demo:
+```shell
+cd jms-bridge-graphana-demo
+./deploy.sh
+```
+
+### Producing Sample Events
+
+To produce sample events, run the following command:
+
+```shell
+cd jms-bridge-graphana-demo
+./produce.sh
+```
+
 The Confluent JMS Bridge Docker Images are required, these are not publicly available but can be obtained from Confluent CSID Team, typically as ```jms-bridge-docker.tar```. They are referenced as ```placeholder/confluentinc/jms-bridge-docker:local.build``` in Docker Compose. They should be loaded in Docker before starting JMS Bridge Graphana Demo for the first time for example:
 ```shell
 docker load < jms-bridge-docker.tar

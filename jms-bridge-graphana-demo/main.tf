@@ -250,3 +250,25 @@ resource "confluent_ksql_cluster" "ksql-cluster" {
     id = confluent_environment.environment.id
   }
 }
+
+resource "confluent_api_key" "ksqldb-api-key" {
+  display_name = "ksqldb-api-key"
+  description  = "KsqlDB API Key that is owned by 'app-manager' service account"
+
+  owner {
+    id          = confluent_service_account.app-ksql.id
+    api_version = confluent_service_account.app-ksql.api_version
+    kind        = confluent_service_account.app-ksql.kind
+  }
+
+  managed_resource {
+    id          = confluent_ksql_cluster.ksql-cluster.id
+    api_version = confluent_ksql_cluster.ksql-cluster.api_version
+    kind        = confluent_ksql_cluster.ksql-cluster.kind
+
+    environment {
+      id = confluent_environment.environment.id
+    }
+  }
+}
+

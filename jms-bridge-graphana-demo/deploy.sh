@@ -31,11 +31,46 @@ export KAFKA_API_KEY=$(terraform output -raw kafka_api_key)
 export KAFKA_API_SECRET=$(terraform output -raw kafka_api_secret)
 export SCHEMA_REGISTRY_API_ID=$(terraform output -raw sr_api_key)
 export SCHEMA_REGISTRY_API_SECRET=$(terraform output -raw sr_api_secret)
+export KSQL_API_KEY=$(terraform output -raw ksql_api_key)
+export KSQL_API_SECRET=$(terraform output -raw ksql_api_secret)
+export KSQL_ENDPOINT=$(terraform output -raw ksql_endpoint)
+
+# Create Grafana data source
+echo "[+] Creating Grafana data source"
+python3 build_datasource.py ./provisioning/datasources/datasource.yml.tpl > ./provisioning/datasources/datasource.yaml
+if [ $? -ne 0 ]; then
+  echo "[-] Failed to create Grafana data source"
+  exit 1
+fi
 
 # Create docker jms-bridge image
 echo "[+] Building docker image"
 docker build -t jms-bridge .
+if [ $? -ne 0 ]; then
+  echo "[-] Failed to build docker image"
+  exit 1
+fi
+
+# Create KSQL Query
+echo "[+] Creating KSQL Query"
+docker build -t execute_ksql_image -f Dockerfile-ksql .
+if [ $? -ne 0 ]; then
+  echo "[-] Failed to build docker image"
+  exit 1
+fi
+
+# Launch KSQL Query Creation
+docker run -e KSQL_ENDPOINT -e KSQL_API_KEY -e KSQL_API_SECRET execute_ksql_image
+if [ $? -ne 0 ]; then
+  echo "[-] Failed to create KSQL Query"
+  exit 1
+fi
+docker rmi execute_ksql_image
 
 # Run docker image
 echo "[+] Running docker image"
-docker-compose -p psycopate-jms up -d
+docker-compose -p psyncopate-jms up -d
+if [ $? -ne 0 ]; then
+  echo "[-] Failed to run docker image"
+  exit 1
+fi

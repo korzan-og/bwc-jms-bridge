@@ -27,6 +27,20 @@ output "sr_api_secret" {
   sensitive = true
 }
 
+output "ksql_api_key" {
+  value = confluent_api_key.ksqldb-api-key.id
+  sensitive = true
+}
+
+output "ksql_api_secret" {
+  value = confluent_api_key.ksqldb-api-key.secret
+  sensitive = true
+}
+
+output "ksql_endpoint" {
+  value = confluent_ksql_cluster.ksql-cluster.rest_endpoint
+}
+
 # output "connection_details" {
 #   value = {
 #     bootstrap_servers : confluent_kafka_cluster.cluster.bootstrap_endpoint,
