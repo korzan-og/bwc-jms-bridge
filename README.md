@@ -35,6 +35,7 @@ confluent_cloud_cluster_name="<confluent_cloud_cluster_name>"
 
 Then run the following command to deploy the JMS Bridge Grafana Demo
 ```shell
+cd jms-bridge-grafana-demo
 ./deploy.sh
 ```
 
@@ -42,6 +43,7 @@ Then run the following command to deploy the JMS Bridge Grafana Demo
 
 To produce messages, run the following command:
 ```shell
+cd jms-bridge-grafana-demo
 ./produce.sh
 ```
 
@@ -53,5 +55,6 @@ Now you can access the Grafana Dashboard by visiting [http://localhost:3000](htt
 
 To stop and remove the containers, run the following command:
 ```shell
+cd jms-bridge-grafana-demo
 ./destroy.sh
 ```
