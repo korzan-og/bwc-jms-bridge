@@ -2,12 +2,31 @@
 
 echo "[+] Deploying to Confluent Cloud"
 
-# Check if terraform is installed and initialized
+# Check if terraform is installed
 if ! [ -x "$(command -v terraform)" ]; then
   echo "[-] Error: terraform is not installed." >&2
   exit 1
 fi
 
+#Check if docker is installed
+if ! [ -x "$(command -v docker)" ]; then
+  echo "[-] Error: docker is not installed." >&2
+  exit 1
+fi
+
+# Check if python3 is installed
+if ! [ -x "$(command -v python3)" ]; then
+  echo "[-] Error: python3 is not installed." >&2
+  exit 1
+fi
+
+#Check if jq is installed
+if ! [ -x "$(command -v jq)" ]; then
+  echo "[-] Error: jq is not installed." >&2
+  exit 1
+fi
+
+#Check if terraform is initialized
 if [ ! -d ".terraform" ]; then
   echo "[+] Initializing terraform"
   terraform init

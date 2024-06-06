@@ -5,8 +5,8 @@ datasources:
     orgId: 1
     isDefault: true
     jsonData:
-      applicationEndpoint: https://pksqlc-7yxv6w.us-west-2.aws.confluent.cloud:443
+      applicationEndpoint: https://pksqlc-nvdzwz.us-west-2.aws.confluent.cloud:443
     secureJsonData:
-      apiKey: BEQ4NFWAB7M2RRYY
-      apiSecret: yDl8eJn8fzFMOt1cCH6tb8a94+fviLjlQ66PT+Xdd3nsBEYNNqgIG/GGoq60HEgK
+      apiKey: B4BHZK2U6MUXJUHU
+      apiSecret: wdxxkVqay2wmucIPRLZVKQNJvGueVlhswtij7hJcFLbvoc1m7TSGtXweYruQty+m
 

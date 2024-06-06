@@ -147,7 +147,7 @@
             "type": "confluent-ksqlDB",
             "uid": "PBE5A62D56368EC14"
           },
-          "queryText": "SELECT * FROM USER_COUNTER  EMIT CHANGES;",
+          "queryText": "SELECT count( AIRPORT ) as `counter`,  AIRPORT  FROM USER_EVENTS_AVRO WINDOW TUMBLING (SIZE 10800 SECONDS) GROUP BY AIRPORT EMIT CHANGES;",
           "refId": "A"
         }
       ],
@@ -237,6 +237,7 @@
           ],
           "show": false
         },
+        "frameIndex": 1,
         "showHeader": true
       },
       "pluginVersion": "11.0.0",
@@ -246,16 +247,20 @@
             "type": "confluent-ksqlDB",
             "uid": "PBE5A62D56368EC14"
           },
-          "queryText": " SELECT STATUS as `TravelerStatus`, COUNT(STATUS) as `Total` FROM USER_EVENTS_AVRO WHERE AIRPORT='$airport' GROUP BY `STATUS` EMIT CHANGES;",
+          "queryText": " SELECT STATUS as `TravelerStatus`, COUNT(STATUS) as `Total`, AIRPORT FROM BY_STATUSES WINDOW TUMBLING (SIZE 10800 SECONDS) GROUP BY STATUS, AIRPORT EMIT CHANGES; ",
           "refId": "A"
         }
       ],
-      "title": "Traveler Statuses for $airport",
+      "title": "Traveler Statuses",
       "transformations": [
         {
           "id": "groupBy",
           "options": {
             "fields": {
+              "AIRPORT": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
               "Total": {
                 "aggregations": [
                   "max"
@@ -266,6 +271,18 @@
                 "aggregations": [],
                 "operation": "groupby"
               }
+            }
+          }
+        },
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "AIRPORT"
+            ],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
             }
           }
         }
@@ -395,7 +412,7 @@
           "refId": "A"
         }
       ],
-      "title": "Airport EVENTS",
+      "title": "All Airport Events",
       "transformations": [
         {
           "id": "sortBy",
@@ -417,77 +434,7 @@
   "schemaVersion": 39,
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": true,
-          "text": "ORD",
-          "value": "ORD"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "airport",
-        "multi": false,
-        "name": "airport",
-        "options": [
-          {
-            "selected": false,
-            "text": "ORD",
-            "value": "ORD"
-          },
-          {
-            "selected": false,
-            "text": "SFO",
-            "value": "SFO"
-          },
-          {
-            "selected": false,
-            "text": "JFK",
-            "value": "JFK"
-          },
-          {
-            "selected": false,
-            "text": "LAX",
-            "value": "LAX"
-          },
-          {
-            "selected": false,
-            "text": "DFW",
-            "value": "DFW"
-          },
-          {
-              "selected": false,
-              "text": "ATL",
-              "value": "ATL"
-          },
-          {
-            "selected": false,
-            "text": "DEN",
-            "value": "DEN"
-          },
-          {
-            "selected": false,
-            "text": "LAS",
-            "value": "LAS"
-          },
-          {
-            "selected": false,
-            "text": "PHX",
-            "value": "PHX"
-          },
-          {
-            "selected": false,
-            "text": "SEA",
-            "value": "SEA"
-          }
-
-        ],
-        "query": "ORD",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-1h",
@@ -498,6 +445,6 @@
   "timezone": "browser",
   "title": "PSY Traveler Events Dashboard",
   "uid": "ddnvluyyjw8w0e",
-  "version": 3,
+  "version": 12,
   "weekStart": ""
 }
