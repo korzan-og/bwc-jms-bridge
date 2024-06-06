@@ -1,6 +1,0 @@
-MyDomain {
-   org.apache.activemq.artemis.spi.core.security.jaas.PropertiesLoginModule required
-       debug=true
-       org.apache.activemq.jaas.properties.user="users.properties.example"
-       org.apache.activemq.jaas.properties.role="roles.properties.example";
-};
