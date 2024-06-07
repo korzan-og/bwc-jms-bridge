@@ -30,25 +30,25 @@ To run this demo, you need to have the following installed on your machine:
 2) Once you have logged in, click on the menu icon at the upper right hand corner and click **Cloud API Keys** to create Cloud API Keys for the terraform provider. 
 
 <div align="center" padding=25px>
-    <img src="./jms-bridge-grafana-demo/images/01-preview.jpg" width=75% height=75%>
+    <img src="./jms-bridge-grafana-demo/images/01-preview.jpg" width=15% height=15%>
 </div>
 
 3) Click **+ Add Key** to create a new API Key.
 
 <div align="center" padding=25px>
-    <img src="./jms-bridge-grafana-demo/images/02-addkey.jpg" width=75% height=75%>
+    <img src="./jms-bridge-grafana-demo/images/02-addkey.jpg" width=60% height=60%>
 </div>
 
 4) For the purpose of this demo selet **Global Access** and click **Next**
 
 <div align="center" padding=25px>
-    <img src="./jms-bridge-grafana-demo/images/03-createapikey.jpg" width=75% height=75%>
+    <img src="./jms-bridge-grafana-demo/images/03-createapikey.jpg" width=50% height=50%>
 </div>
 
 5) Type a description and to preserve the keys, click download. 
 
 <div align="center" padding=25px>
-    <img src="./jms-bridge-grafana-demo/images/04-download.jpg" width=75% height=75%>
+    <img src="./jms-bridge-grafana-demo/images/04-download.jpg" width=50% height=50%>
 </div>
 
 6) Create a file called `values.tfvars` with the following content in the same directory as `docker-compose.yml`:
